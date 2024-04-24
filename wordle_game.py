@@ -2,6 +2,7 @@ from typing import List
 from random import randint
 import re
 
+
 class FileReader:
     __path: str
     __data: str
@@ -24,7 +25,8 @@ class Word:
     
     def __init__(self, word: str, color: str):
         self.__word = word
-        self.__color = color
+        self.__color = "\033[33m"
+        
 
     @property
     def word(self):
@@ -82,7 +84,7 @@ class Game:
         print(f"You have {self.__attempts} attempts to guess the secret word.")
         print("Here are the words:")
         self.__word_manager.display_all_words()
-        print("Let's starts!")
+        print("\033[0m" + "Let's starts! ")
 
     def play(self):
         attempts_left = self.__attempts
@@ -110,3 +112,4 @@ if __name__ == "__main__":
     game = Game(3)
     game.start()
     game.play()
+    

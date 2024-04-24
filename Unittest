@@ -1,0 +1,26 @@
+import unittest
+
+
+from wordle_game import WordManager, Word
+
+
+class TestWordManager(unittest.TestCase):
+    
+  
+    def setUp(self):
+        self.word_manager = WordManager()
+    
+ 
+    def test_is_word_exist_existing_word(self):
+        existing_word = self.word_manager._WordManager__words[0].simple_word
+        
+        self.assertTrue(self.word_manager.is_word_exist(existing_word))
+    
+
+    def test_is_word_exist_non_existing_word(self):
+        non_existing_word = "nonexistent"
+        
+        self.assertFalse(self.word_manager.is_word_exist(non_existing_word))
+
+if __name__ == '__main__':
+    unittest.main()
