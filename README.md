@@ -29,11 +29,7 @@ The program fulfills the following functional requirements:
     
 -   Utilizes singleton and builder design patterns
     
-
 ### 3. Results and Summary
-
--   Results:
-    
 
 -   Implemented the word guessing game functionality.
     
@@ -43,7 +39,6 @@ The program fulfills the following functional requirements:
 
 -   Added unittesting functionality
     
-
 #### Conclusions
 
 The implemented program provides a game for users. It meets the specified functional requirements. Future prospects include:
