@@ -40,11 +40,13 @@ The program fulfills the following functional requirements:
 -   Completed part that validates user input and ensures it matches the provided word list.
     
 -   Validating misspelled words or other english words took the longest
+
+-   Added unittesting functionality
     
 
 #### Conclusions
 
-The implemented program provides an engaging word guessing experience for users. It meets the specified functional requirements. Future prospects include:
+The implemented program provides a game for users. It meets the specified functional requirements. Future prospects include:
 
 -   Adding more features such as difficulty levels.
     
@@ -57,5 +59,7 @@ The implemented program provides an engaging word guessing experience for users.
 -  https://peps.python.org/pep-0008/
 
 -  https://www.markdownguide.org/basic-syntax/
+
+-  https://github.com/coala/coala-bears/issues/2862
 
 -  additional thanks to a friend that sugested to make such game   
