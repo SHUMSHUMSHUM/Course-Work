@@ -1,9 +1,7 @@
 import unittest
 from io import StringIO  
 from wordle_game import WordManager, Word
-from unittest.mock import patch #Without these part i was receving:
-#"AttributeError: module 'unittest' has no attribute 'mock'"
-#After googling the issue it appeard to be the only fix
+from unittest.mock import patch 
 
 class TestWordManager(unittest.TestCase):
     
