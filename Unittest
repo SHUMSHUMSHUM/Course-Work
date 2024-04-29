@@ -1,6 +1,8 @@
 import unittest
 from io import StringIO  
-from wordle_game import WordManager, Word
+from game_class import Game
+from wordmanager_class import WordManager
+from word_class import Word
 from unittest.mock import patch 
 
 class TestWordManager(unittest.TestCase):
