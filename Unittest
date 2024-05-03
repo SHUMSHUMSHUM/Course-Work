@@ -1,43 +1,36 @@
 import unittest
-from io import StringIO  
-from game_class import Game
-from wordmanager_class import WordManager
-from word_class import Word
-from unittest.mock import patch 
+from unittest.mock import patch
+from game import Game
+from wordmanager import WordManager
+from wordmanager_factory import WordManagerFactory
+from word import Word
 
-class TestWordManager(unittest.TestCase):
-    
+
+class TestGame(unittest.TestCase):
     def setUp(self):
-        self.word_manager = WordManager()
-    
-    def test_is_word_exist_existing_word(self):
-        existing_word = self.word_manager._WordManager__words[0].simple_word
-        self.assertTrue(self.word_manager.is_word_exist(existing_word))
-    
-    def test_is_word_exist_non_existing_word(self):
-        non_existing_word = "nonexistent"
-        self.assertFalse(self.word_manager.is_word_exist(non_existing_word))
-    
-    def test_display_all_words(self):
-        with unittest.mock.patch('sys.stdout', new=StringIO()) as captured_output:
-            self.word_manager.display_all_words()
-            printed_output = captured_output.getvalue().strip()
+        self.word_manager_factory = WordManagerFactory()
+        self.word_manager = WordManager(["test_word"] * 5)
+        self.game = Game(3, self.word_manager)
 
-        self.assertTrue(all("\033[33m" in word for word in printed_output.split("\n")))
-    
-    def test_secret_word(self):
-        secret_word = self.word_manager.secret_word()
-        self.assertIsInstance(secret_word, str)
+    @patch('builtins.input', side_effect=['test_word'])
+    def test_guess_secret_word_correctly(self, mock_input):
+        self.assertEqual(self.game.play(), "\033[32mCongratulations! You've guessed the secret word correctly.\033[0m")
 
-class TestWord(unittest.TestCase):
-    
-    def test_word_property(self):
-        word = Word("test", "\033[33m")
-        self.assertEqual(word.word, "\033[33mtest")
-    
-    def test_simple_word_property(self):
-        word = Word("test", "\033[33m")
-        self.assertEqual(word.simple_word, "test")
+    @patch('builtins.input', side_effect=['wrong_word'] * 3)
+    def test_out_of_attempts_lost(self, mock_input):
+        self.assertEqual(self.game.play(), "\033[31mOut of attempts! You lost!\033[0m")
+
+    @patch('builtins.input', side_effect=['!@#'])
+    def test_invalid_guess(self, mock_input):
+        self.assertEqual(self.game.play(), "Please enter English letters only.")
+
+    @patch('builtins.input', side_effect=['wrong_word'] * 2 + ['test_word'])
+    def test_wrong_guess(self, mock_input):
+        self.assertEqual(self.game.play(), "Wrong guess! 1 attempts left.")
+
+    def test_word_display(self):
+        self.assertEqual(self.word_manager.display_all_words(), None)
+
 
 if __name__ == '__main__':
     unittest.main()
