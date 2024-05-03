@@ -1,6 +1,7 @@
 from wordmanager import WordManager
 from filereader import FileReader
 
+
 class WordManagerFactory:
     _instance = None
 

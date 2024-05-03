@@ -2,6 +2,7 @@ from word import Word
 from random import randint
 from typing import List
 
+
 class WordManager:
     def __init__(self, word_list: List[str]):
         self.__words = []
@@ -22,4 +23,3 @@ class WordManager:
     def is_word_exist(self, guessed_word):
         return any(word.simple_word == guessed_word for word in self.__words)
 
-    

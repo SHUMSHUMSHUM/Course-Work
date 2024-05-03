@@ -1,5 +1,6 @@
 import re
 
+
 class Game:
     def __init__(self, attempts, word_manager):
         self.__attempts = attempts
