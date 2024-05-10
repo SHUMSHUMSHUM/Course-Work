@@ -2,7 +2,7 @@
 
 ## 1. Introduction
 
-###  What is your application?
+###  What is this application?
 
 The application is a word guessing game implemented in Python. It allows users to guess a secret word chosen from a predefined list within a limited number of attempts. It can be easily modified to increase the number of attempts or words that are provided to the list.
 
@@ -16,7 +16,7 @@ Once the program is running, follow the prompts on the terminal. You'll be prese
 
 ## 2. Body/Analysis
 
-###  Explain how the program covers functional requirements
+###  Explaination how the program cworks
 
 The program covers the following functional requirements:
 
